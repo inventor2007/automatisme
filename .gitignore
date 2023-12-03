@@ -1,0 +1,6 @@
+test*.*
+exemple.py
+*/__pycache__/*
+*/__pycache__
+temp/
+automatisme.pdf
