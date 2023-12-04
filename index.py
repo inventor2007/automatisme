@@ -4,6 +4,7 @@ from functions.database import *
 from functions.createPDF import *
 from windows.classeMenu import *
 from windows.chapitreMenu import *
+from windows.automatismeMenu import *
 
 customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("blue")
@@ -31,7 +32,10 @@ class App(customtkinter.CTk):
     self.open_classe_menu_button.grid(row=2, column=0, padx=20, pady=(20, 0))
 
     self.open_chapitre_menu_button = customtkinter.CTkButton(self.sidebar_frame, command=chapitreMenu, text="Menu Chapitre")
-    self.open_chapitre_menu_button.grid(row=3, column=0, padx=20, pady=20)
+    self.open_chapitre_menu_button.grid(row=3, column=0, padx=20, pady=(20, 0))
+
+    self.open_chapitre_menu_button = customtkinter.CTkButton(self.sidebar_frame, command=automatismeMenu, text="Menu Automatisme")
+    self.open_chapitre_menu_button.grid(row=4, column=0, padx=20, pady=20)
 
     # Logs
     self.logsbox = customtkinter.CTkTextbox(self.sidebar_frame)

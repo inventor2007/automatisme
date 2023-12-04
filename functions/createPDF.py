@@ -68,8 +68,8 @@ def latex_to_png(latec, name):
   fig = plt.figure(figsize=(35, 7.8), facecolor="red")
 
   plt.axis("off")
-  expression = f"${latec}$" if "\\" in latec else f"{latec}"
-  plt.text(0.5, 0.5, expression, size=100, ha="center", va="center")
+  expression = f"${latec}$" if "\\" in latec or "{" in latec else f"{latec}"
+  plt.text(0.5, 0.5, expression.replace("\\\\", "\\"), size=100, ha="center", va="center")
 
 
   plt.savefig(f"temp/{name}.png", format="png", bbox_inches="tight", pad_inches=0, transparent=True)
