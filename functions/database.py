@@ -66,15 +66,30 @@ def remove_all_chapitres_by_classe_id(classeId):
 
 # ##### Automatismes #####
 
-def get_automatismes_by_chapitres_enable(chapitres):
+def get_all_automatismes_by_chapitres_enable(chapitres):
   req_automatismes = f"SELECT * FROM automatismes WHERE enable = 'true' AND chapitreId IN ({','.join(map(str, chapitres))})"
   res = cursor.execute(req_automatismes)
   return res.fetchall()
 
-def get_automatismes_by_id(automatismesId):
+def get_all_automatismes_by_chapitres(chapitres):
+  req_automatismes = f"SELECT * FROM automatismes WHERE chapitreId IN ({','.join(map(str, chapitres))})"
+  res = cursor.execute(req_automatismes)
+  return res.fetchall()
+
+def get_automatismes_by_chapitres(chapitres):
+  req_automatismes = f"SELECT * FROM automatismes WHERE chapitreId = {chapitres}"
+  res = cursor.execute(req_automatismes)
+  return res.fetchall()
+
+def get_automatismes_by_id_enable(automatismesId):
   req_automatismes = f"SELECT * FROM automatismes WHERE enable = 'true' AND id IN ({','.join(map(str, automatismesId))})"
   res = cursor.execute(req_automatismes)
   return res.fetchall()
+
+def add_automatisme(question, chapitreId):
+  req_chapitres = f"INSERT INTO automatismes(question, chapitreId) VALUES ('{question}', '{chapitreId}')"
+  cursor.execute(req_chapitres)
+  connection.commit()
 
 def remove_all_automatismes_by_chapitre_name_by_classe_name(classeName, chapitreName):
   chapitre = get_chapitres_by_classe_name_by_chapitre_name(classeName, chapitreName)

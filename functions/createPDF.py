@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from functions.database import *
 
 def create_automatisme(nombre, automatismesId, nombreParPage):
-  automatismes = get_automatismes_by_id(automatismesId)
+  automatismes = get_automatismes_by_id_enable(automatismesId)
 
   if not os.path.exists("temp"):
     os.makedirs("temp")

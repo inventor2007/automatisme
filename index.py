@@ -100,7 +100,7 @@ class App(customtkinter.CTk):
       if i.get():
         switchOn.append(i.grid_info()['row'])
 
-    automatismes = get_automatismes_by_chapitres_enable(switchOn)
+    automatismes = get_all_automatismes_by_chapitres_enable(switchOn)
 
     if self.automatisme_frame_switches != []:
       for i in self.automatisme_frame_switches:
