@@ -56,14 +56,3 @@ class chapitreMenu(customtkinter.CTkToplevel):
       self.name_chapitre.set("Aucun chapitre")
     else:
       self.name_chapitre.set(chapitres[0])
-  
-  # def _add_classe(self):
-  #   if self.entry.get() == "":
-  #     return self.entry.focus()
-
-  #   add_classe(self.entry.get())
-  #   self.destroy()
-  
-  # def _remove_classe(self):
-  #   remove_classe_by_name(self.name_class.get())
-  #   self.destroy()

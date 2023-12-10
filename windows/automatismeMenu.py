@@ -5,7 +5,7 @@ class automatismeMenu(customtkinter.CTkToplevel):
   def __init__(self):
     super().__init__()
     self.minsize(650, 110)
-    # self.maxsize(340, 110)
+    self.maxsize(650, 110)
 
     self.grid_columnconfigure((1), weight=1)
     self.grid_columnconfigure((0, 2), weight=0)
@@ -32,7 +32,7 @@ class automatismeMenu(customtkinter.CTkToplevel):
     self.name_automatismes.grid(row=1, column=1, padx=(20, 0), pady=(20, 20))
     self._update_automatisme()
 
-    self.remove_automatisme = customtkinter.CTkButton(self, text="Supprimer un automatisme")
+    self.remove_automatisme = customtkinter.CTkButton(self, text="Supprimer un automatisme", command=self._remove_automatisme)
     self.remove_automatisme.grid(row=1, column=2, padx=(20, 20), pady=(20, 20), sticky="nsew")
   
   def _add_automatisme(self):
@@ -48,6 +48,24 @@ class automatismeMenu(customtkinter.CTkToplevel):
     chapitre = get_chapitres_by_classe_name_by_chapitre_name(self.name_classe.get(), self.name_chapitre.get())
 
     add_automatisme(self.entry.get().replace("\\", "\\\\"), chapitre[0])
+
+    self.destroy()
+
+  def _remove_automatisme(self):
+    if self.name_classe.get() == "Aucune Classe":
+      return
+    
+    if self.name_chapitre.get() == "Aucun chapitre":
+      return
+    
+    if self.name_automatismes.get() == "Aucun Automatisme":
+      return
+    
+    chapitre = get_chapitres_by_classe_name_by_chapitre_name(self.name_classe.get(), self.name_chapitre.get())
+
+    remove_automatismes_by_chapitre_id_by_question(chapitre[0], self.name_automatismes.get())
+
+    self.destroy()
   
   def _update_chapitres(self, *args):
     if self.name_classe.get() == "Aucune Classe":

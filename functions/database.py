@@ -91,6 +91,11 @@ def add_automatisme(question, chapitreId):
   cursor.execute(req_chapitres)
   connection.commit()
 
+def remove_automatismes_by_chapitre_id_by_question(chapitreId, question):
+  req_automatisme = f"DELETE FROM automatismes WHERE chapitreId = '{chapitreId}' AND question = '{question}'"
+  cursor.execute(req_automatisme)
+  connection.commit()
+
 def remove_all_automatismes_by_chapitre_name_by_classe_name(classeName, chapitreName):
   chapitre = get_chapitres_by_classe_name_by_chapitre_name(classeName, chapitreName)
   req_automatisme = f"DELETE FROM automatismes WHERE chapitreId = '{chapitre[0]}'"
