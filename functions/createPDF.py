@@ -16,7 +16,7 @@ def create_automatisme(nombre, automatismesId, nombreParPage):
   pdf.add_page()
 
   if nombre == 5:
-    yPoints = [38.4, 59.1, 79.7, 100.2, 120.8]
+    yPoints = [37.4, 58.1, 78.7, 99.2, 119.8]
 
     add_header(pdf)
 
@@ -58,11 +58,11 @@ def create_automatisme(nombre, automatismesId, nombreParPage):
 def add_header(pdf):
   pdf.set_font("Helvetica", "", 12)
 
-  pdf.cell(50, 8, "Nom :", )
-  pdf.cell(40, 8, "Prénom :", ln=True)
+  pdf.cell(50, 7, "Nom :", )
+  pdf.cell(40, 7, "Prénom :", ln=True)
 
   pdf.set_font("Helvetica", "U", 15)
-  pdf.cell(35, 13, "Automatisme", center=True, ln=True)
+  pdf.cell(35, 13, "Automatisme", align='C', ln=True)
 
 def latex_to_png(latec, name):
   fig = plt.figure(figsize=(35, 7.8), facecolor="red")
