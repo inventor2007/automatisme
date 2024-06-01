@@ -3,9 +3,11 @@ from fpdf import FPDF
 from fpdf.enums import Align
 import matplotlib.pyplot as plt
 from functions.database import *
+from functions.replaceText import replaceText
 
 def create_automatisme(nombre, automatismesId, nombreParPage):
   automatismes = get_automatismes_by_id_enable(automatismesId)
+  print(automatismes)
 
   if not os.path.exists("temp"):
     os.makedirs("temp")
@@ -26,7 +28,7 @@ def create_automatisme(nombre, automatismesId, nombreParPage):
     pdf.cell(90, 7, "Réponse", border=True, ln=True)
 
     for i in automatismes:
-      latex_to_png(i[1], i[0])
+      latex_to_png(replaceText(i[1]).text, i[0])
 
     exNum = 1
     for i in range(5):
